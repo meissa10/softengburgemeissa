@@ -7,6 +7,7 @@ import grid from './gridGen.js'
 import Solutions from './solver.js'
 import { TextField } from '@material-ui/core';
 import english_dic from './full-wordlist'
+import LogInButton from  './login_button.js'
 
 function App() {
   const GAME_STATE = {
@@ -15,6 +16,7 @@ function App() {
     ENDED: 'ended',
     
   }
+const  [user,setUser]=useState(null);
 let dictionnary= english_dic;
 let Allsolutions  = Solutions(grid, dictionnary);
 
@@ -97,14 +99,47 @@ function key_press(e){
   return (
     <div className="App">
       <header className="App-header">
-        <h2 >
+        {actual_state===GAME_STATE.BEFORE &&
+        <div  >
+          <h2 >
           Welcome to my Boggle
         </h2>
+        {user ==  null&& 
+        <h2 >
+
+        <LogInButton setUser ={(user) => setUser(user)}/>
+        { user !==  null&&  
+            <p >
+              {user.displayName}
+            </p>
+          }
+      </h2>
+
+        }
+        
+
+
+
+        </div>
+        
+        
+        }
+        
+        
+        
+        
+        { user !==null &&
+        <p >
+          Player: {user.displayName}
+        </p>
+          
+        }
         
         <div >
           <p > 
           <Button onClick={()=>update_state()} style={{backgroundColor:"beige"}} >
             {buttonText}
+            
           </Button>
           </p>
 
