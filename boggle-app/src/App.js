@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import logo from './logo.svg';
 import './App.css';
 import Button from '@material-ui/core/Button'
 import  Starter from './starter.js'
@@ -59,11 +60,11 @@ function update_state(){
    
     
     //alert(dictionnary);
-    if(actual_state === GAME_STATE.BEFORE){
+    if(actual_state == GAME_STATE.BEFORE){
       setState(GAME_STATE.IN_PROGRESS);
       setButton("End Game");
     }
-    else if(actual_state === GAME_STATE.IN_PROGRESS){
+    else if(actual_state == GAME_STATE.IN_PROGRESS){
       setState(GAME_STATE.ENDED);
       setButton("Start a New Game");
       setLabel("Make a Guess");
