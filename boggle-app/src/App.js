@@ -8,6 +8,8 @@ import Solutions from './solver.js'
 import { TextField } from '@material-ui/core';
 import english_dic from './full-wordlist'
 import LogInButton from  './login_button.js'
+import TextInput from './CreateAccount.js'
+import UserResponses from './UserResponse.js'
 
 function App() {
   const GAME_STATE = {
@@ -25,6 +27,7 @@ let [label_sign, setLabel]= useState("Make a guess");
 let [Foundsolutions,setFoundsolutions]= useState([]);
 let [buttonText, setButton]= useState("Start New Game");
 let [input,setInput]=  useState("");
+let [ShowleaderBoard, setShowLeaderBoard]= useState(false);
   
 
 
@@ -106,6 +109,10 @@ function key_press(e){
         </h2>
         {user ==  null&& 
         <h2 >
+          <p>
+            Leaderboard:
+          </p>
+          <UserResponses />
 
         <LogInButton setUser ={(user) => setUser(user)}/>
         { user !==  null&&  
@@ -203,6 +210,7 @@ function key_press(e){
           <p >
             
             <Starter/>
+            < TextInput score ={Foundsolutions.length} user={user}/>
             <h5 >
                   List of all solutions: 
             </h5>
